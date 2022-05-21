@@ -37,6 +37,7 @@ button {
 .container {
     padding: 0 1.5em;
     margin: auto;
+    max-height: 100vh;
     @media (max-width: 576px) {
         width: auto;
     }
