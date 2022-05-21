@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="minesweeper">
+        <div class="container">
+            <!-- Start interface -->
+            <div class="interface">
+                <img src="imgs/logo.png" alt="">
+                <div class="game-mode">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <ul class="level">
+                        <li>Easy 9 * 9</li>
+                        <li class="active">Medium 16 * 16</li>
+                        <li>Expert 16 * 30</li>
+                    </ul>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <button class="start-btn">New Game</button>
+            </div>
+            <!-- End interface -->
+            <!-- Start game -->
+            <div class="game">
+                <header class="game-header">
+                    <div class="time">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>02:12</span>
+                    </div>
+                    <div class="tools">
+                        <div class="icons">
+                            <i class="fa-solid fa-land-mine-on active"></i>
+                            <i class="fa-solid fa-flag"></i>
+                            <i class="fa-solid fa-question"></i>
+                        </div>
+                        <div class="mines-count">10 mines</div>
+                    </div>
+                    <div class="retry">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+                </header>
+                <div class="game-field">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <!-- End game -->
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

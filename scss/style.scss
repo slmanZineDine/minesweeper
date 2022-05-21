@@ -1,0 +1,151 @@
+// Variables
+// --Colors
+$interface-color: #2a2925;
+$font-color: #f7f4f8;
+$header-bg: #808fa3;
+$square-color: #0d1825;
+$square-done-color: #2fbbfb;
+// --Fonts
+// --Dimensions
+
+// Mixin
+@mixin flex($justify, $align, $gap: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+// Global Rules
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul, ol {
+    list-style-type: none;
+}
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: $interface-color;
+    color: $font-color;
+    max-height: 100vh;
+}
+button {
+    font-family: inherit;
+}
+.container {
+    padding: 0 1.5em;
+    margin: auto;
+    @media (max-width: 576px) {
+        width: auto;
+    }
+    @media (min-width: 576px) {
+        width: 400px;
+    }
+    @media (min-width: 768px) {
+        width: 500px;
+    }
+    @media (min-width:992px) {
+        width: 600px;
+    }
+    @media (min-width:1200px) {
+        width: 800px;
+    }
+}
+
+/* Helper Classes */
+
+
+/* Start interface */
+.interface {
+    @include flex(center, center, 2em);
+    flex-direction: column;
+    padding: 1.5rem 0;
+    &.hidden {
+        display: none;
+    }
+    img {
+        width: 25em;
+    }
+    .game-mode {
+        @include flex(center, center);
+        .level {
+            @include flex(center, center);
+            li {
+                display: none;
+                margin: 0 1em;
+            }
+            li.active {
+                display: block;
+            }
+        }
+        i {
+            font-size: 1.4em;
+            cursor: pointer;
+        }
+    }
+    .start-btn {
+        background-color: inherit;
+        color: $font-color;
+        font-size: 1.2em;
+        border: 2px solid #424242;
+        border-radius: 1.6em;
+        padding: .8em 2em;
+        cursor: pointer;
+    }
+}
+/* End interface */
+
+/* Start game dsesign */
+.game {
+    overflow: hidden;
+    max-width: 100%;
+    @include flex(center, center);
+    flex-direction: column;
+    transform: scale(0);
+    transition: transform .5s;
+    &.show {
+        transform: scale(1);
+    }
+    .game-header {
+        @include flex(space-between, center, 2em);
+        background-color: $header-bg;
+        padding: .4em 1em;;
+        width: 100%;
+        font-size: 1.1rem;
+        .tools {
+            @include flex(center, center);
+            flex-direction: column;
+            .icons {
+                padding: .5rem .8rem;
+                i {
+                    display: none;
+                    cursor: pointer;
+                }
+                i.active {
+                    display: block;
+                }
+            }
+        }
+        .retry {
+            padding: .8rem 1rem;
+            cursor: pointer;
+        }
+    }
+    .game-field {
+        width: 100%;
+        max-height: 100%;
+        background-color: $header-bg;
+        display: grid;
+        grid-template-columns: repeat(9, minmax(30px , 1fr));
+        grid-template-rows: repeat(9, minmax(30px, 1fr));
+        gap: 2px;
+        span {
+            background-color: $square-color;
+            display: block;
+            aspect-ratio: 1 / 1;
+        }
+    }
+}
+/* End game dsesign */
