@@ -9,9 +9,12 @@ let replay = document.querySelector(".fa-rotate-left");
 let startBtn = document.querySelector(".start-btn");
 let arrowL = document.querySelector(".fa-angle-left");
 let arrowR = document.querySelector(".fa-angle-right");
+let icons = document.querySelector(".icons");
 
 // Global Variables
 let levelSelected = 1;
+let iconsStatus = "next";
+let iconName = "mine";
 
 // Events Handler
 startBtn.onclick = function () {
@@ -31,6 +34,9 @@ gameMode.onclick = function (e) {
 }
 replay.onclick = function () {
     retry();
+}
+icons.onclick = function (e) {
+    changeIcon(e.target);
 }
 // Functions
 function startGame() {
@@ -55,4 +61,20 @@ function changeLevel() {
 }
 function retry() {
     location.reload();
+}
+function changeIcon(ele) {
+    for(let i = 0 ; i < icons.children.length ; i++)
+        icons.children[i].classList.remove("active");
+
+    if(ele === icons.children[2]) iconsStatus = "prev";
+    else if(ele === icons.children[0]) iconsStatus = "next";
+
+    if(iconsStatus === "next") {
+        ele.nextElementSibling.classList.add("active");
+        iconName = ele.nextElementSibling.classList[2];
+    }
+    else if(iconsStatus === "prev") {
+        ele.previousElementSibling.classList.add("active");
+        iconName = ele.previousElementSibling.classList[2];
+    }
 }

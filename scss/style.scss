@@ -35,7 +35,6 @@ button {
     font-family: inherit;
 }
 .container {
-    padding: 0 1.5em;
     margin: auto;
     max-height: 100vh;
     @media (max-width: 576px) {
@@ -83,6 +82,7 @@ button {
         }
         i {
             font-size: 1.4em;
+            padding: .3em .5em;
             cursor: pointer;
         }
     }
