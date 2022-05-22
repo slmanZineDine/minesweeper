@@ -28,7 +28,7 @@ button {
     width: auto;
   }
 }
-@media (min-width: 576px) {
+@media (min-width: 577px) {
   .container {
     width: 400px;
   }
@@ -40,12 +40,7 @@ button {
 }
 @media (min-width: 992px) {
   .container {
-    width: 600px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 800px;
+    width: 550px;
   }
 }
 
@@ -132,12 +127,10 @@ button {
   gap: 0;
   flex-direction: column;
 }
-.game .game-header .tools .icons {
-  padding: 0.5rem 0.8rem;
-}
 .game .game-header .tools .icons i {
   display: none;
   cursor: pointer;
+  padding: 0.6rem 1rem;
 }
 .game .game-header .tools .icons i.active {
   display: block;
@@ -151,9 +144,9 @@ button {
   max-height: 100%;
   background-color: #808fa3;
   display: grid;
-  grid-template-columns: repeat(9, minmax(30px, 1fr));
-  grid-template-rows: repeat(9, minmax(30px, 1fr));
-  gap: 2px;
+  grid-template-columns: repeat(9, minmax(24px, 1fr));
+  grid-template-rows: repeat(9, minmax(24px, 1fr));
+  gap: 1px;
 }
 .game .game-field span {
   background-color: #0d1825;

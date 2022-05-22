@@ -40,17 +40,14 @@ button {
     @media (max-width: 576px) {
         width: auto;
     }
-    @media (min-width: 576px) {
+    @media (min-width: 577px) {
         width: 400px;
     }
     @media (min-width: 768px) {
         width: 500px;
     }
     @media (min-width:992px) {
-        width: 600px;
-    }
-    @media (min-width:1200px) {
-        width: 800px;
+        width: 550px;
     }
 }
 
@@ -119,10 +116,10 @@ button {
             @include flex(center, center);
             flex-direction: column;
             .icons {
-                padding: .5rem .8rem;
                 i {
                     display: none;
                     cursor: pointer;
+                    padding: .6rem 1rem;
                 }
                 i.active {
                     display: block;
@@ -139,9 +136,9 @@ button {
         max-height: 100%;
         background-color: $header-bg;
         display: grid;
-        grid-template-columns: repeat(9, minmax(30px , 1fr));
-        grid-template-rows: repeat(9, minmax(30px, 1fr));
-        gap: 2px;
+        grid-template-columns: repeat(9, minmax(24px , 1fr));
+        grid-template-rows: repeat(9, minmax(24px, 1fr));
+        gap: 1px;
         span {
             background-color: $square-color;
             display: block;
