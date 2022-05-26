@@ -144,14 +144,15 @@ button {
   max-height: 100%;
   background-color: #808fa3;
   display: grid;
-  grid-template-columns: repeat(9, minmax(24px, 1fr));
-  grid-template-rows: repeat(9, minmax(24px, 1fr));
+  grid-template-columns: repeat(9, minmax(23px, 1fr));
+  grid-template-rows: repeat(9, minmax(23px, 1fr));
   gap: 1px;
 }
 .game .game-field span {
   background-color: #0d1825;
   display: block;
   aspect-ratio: 1/1;
+  cursor: pointer;
 }
 
 /* End game dsesign *//*# sourceMappingURL=style.css.map */

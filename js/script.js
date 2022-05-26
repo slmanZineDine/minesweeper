@@ -19,19 +19,15 @@ let iconsStatus = "next";
 let iconName = "mine";
 let squareCount = [81, 256, 480];
 let colRowCount = [[9, 9], [16, 16], [16, 30]];
+let minesSet = new Set();
 let minesCountArr = [12, 38, 72];
-// let mineArr = [2, 6 ,7, 1, 9, 12, 14];
 let state = "clear";
 
 // Events Handler
 startBtn.onclick = function () {
     startGame();
     createGameField();
-    // for(let i = 0 ; i < gameField.children.length ; i++) {
-    //     if(mineArr.includes(+gameField.children[i].id)) {
-    //         gameField.children[i].style.backgroundColor = "red";
-    //     }
-    // }
+    distributeMines();
 }
 gameMode.onclick = function (e) {
     if(e.target.classList.contains("fa-angle-left")) {
@@ -46,7 +42,7 @@ gameMode.onclick = function (e) {
     }
 }
 gameField.onclick = function (e) {
-    // squaresId(e.target);
+    squaresId(e.target);
 }
 replay.onclick = function () {
     retry();
@@ -77,20 +73,20 @@ function changeLevel() {
 }
 function createGameField() {
     let colCount = colRowCount[levelSelected][0];
-    let colNum = 0;
-    let rowNum = 0;
+    let colNum = 0,
+        rowNum = 0;
     for(let i = 0 ; i < squareCount[levelSelected] ; i++) {
         let span = document.createElement("span");
         if(colCount <= colNum) {
             colNum = 0;
             rowNum++;
         }
-        span.dataset.id = `${rowNum}_${colNum++}`;
+        span.id = `${colNum++}_${rowNum}`;
         gameField.append(span);
     }
     gameField.style.cssText = `
-        grid-template-columns: repeat(${colRowCount[levelSelected][0]}, minmax(24px , 1fr));
-        grid-template-rows: repeat(${colRowCount[levelSelected][1]}, minmax(24px, 1fr));
+        grid-template-columns: repeat(${colRowCount[levelSelected][0]}, minmax(23px , 1fr));
+        grid-template-rows: repeat(${colRowCount[levelSelected][1]}, minmax(23px, 1fr));
     `;
     minesCount.innerHTML = minesCountArr[levelSelected];
 }
@@ -113,49 +109,55 @@ function changeIcon(ele) {
         iconName = ele.previousElementSibling.classList[2];
     }
 }
-
+function distributeMines() {
+    let minesCount = minesCountArr[levelSelected];
+    let max = squareCount[levelSelected];
+    while(minesSet.size < minesCount) {
+        let rand = Math.trunc((Math.random() * max));
+        minesSet.add(gameField.children[rand].id)
+    }
+    minesSet.forEach(e => {
+        document.getElementById(`${e}`).style.backgroundColor = "red";
+    });
+}
 function squaresId(ele) {
     // check if ele is a mine
-    // let clicked = ele.id;
-    // let travNum = colRowCount[levelSelected][0];
-    // let arr = [
-    //     document.getElementById(`${clicked - travNum - 1}`),
-    //     document.getElementById(`${clicked - travNum}`),
-    //     document.getElementById(`${clicked - travNum + 1}`),
-    //     document.getElementById(`${clicked - 1}`),
-    //     document.getElementById(`${+clicked + 1}`),
-    //     document.getElementById(`${+clicked + travNum - 1}`),
-    //     document.getElementById(`${+clicked + travNum}`),
-    //     document.getElementById(`${+clicked + travNum + 1}`)
-    // ];
-    // for(let i = 0 ; i < 8 ; i++) {
-    //     checkfunc(arr[i], ele);
-    // }
+    if(ele.classList.contains("opened")) return;
+    ele.classList.add("opened");
+    let arrOfSurrounded = getSurroundedSquares(ele);
 
-    // if(state === "clear") {
-    //     for(let i = 0 ; i < 8 ; i++) {
-    //         squaresId(arr[i], ele);
-    //         if(state === "mine") return;
-    //     }
-    // } else if(state === "mine") return;
-    // ele.style.backgroundColor = "white";
+    for(let i = 0 ; i < arrOfSurrounded.length ; i++)
+        checkfunc(arrOfSurrounded[i], ele);
+
+    if(state === "clear") {
+        for(let i = 0 ; i < arrOfSurrounded.length ; i++) {
+            arrOfSurrounded[i].style.backgroundColor = "blue";
+            squaresId(arrOfSurrounded[i]);
+        }     
+    }
+    else if(state === "mine") {
+        state = "clear";
+        return;
+    }
 }
-
-// function checkfunc(surrEle, clicked) {
-//     if(surrEle === null) return;
-//     if(mineArr.includes(+surrEle.id)) {
-//         clicked.innerHTML = +clicked.innerHTML + 1;
-//         state = "mine";
-//         return;
-//     } else {
-//         surrEle.style.backgroundColor = "blue";
-//     }
-// }
-// let topLeft = document.getElementById(`${clicked - travNum - 1}`);
-// let topCenter = document.getElementById(`${clicked - travNum}`);
-// let topRight = document.getElementById(`${clicked - travNum + 1}`);
-// let centerLeft = document.getElementById(`${clicked - 1}`);
-// let centerRight = document.getElementById(`${+clicked + 1}`);
-// let bottomLeft = document.getElementById(`${+clicked + travNum - 1}`);
-// let bottomCenter = document.getElementById(`${+clicked + travNum}`);
-// let bottomRight = document.getElementById(`${+clicked + travNum + 1}`);
+function checkfunc(surrEle, clicked) {
+    if(minesSet.has(surrEle.id)) {
+        clicked.innerHTML = +clicked.innerHTML + 1;
+        state = "mine";
+    }
+}
+function getSurroundedSquares(ele) {
+    let col = ele.id.split("_")[0];
+    let row = ele.id.split("_")[1];
+    let arr = [
+        document.getElementById(`${col - 1}_${row - 1}`),
+        document.getElementById(`${col}_${row - 1}`),
+        document.getElementById(`${+col + 1}_${row - 1}`),
+        document.getElementById(`${col - 1}_${row}`),
+        document.getElementById(`${+col + 1}_${row}`),
+        document.getElementById(`${col - 1}_${+row + 1}`),
+        document.getElementById(`${col}_${+row + 1}`),
+        document.getElementById(`${+col + 1}_${+row + 1}`)
+    ].filter(e => e != null);
+    return arr;
+}

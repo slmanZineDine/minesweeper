@@ -136,13 +136,14 @@ button {
         max-height: 100%;
         background-color: $header-bg;
         display: grid;
-        grid-template-columns: repeat(9, minmax(24px , 1fr));
-        grid-template-rows: repeat(9, minmax(24px, 1fr));
+        grid-template-columns: repeat(9, minmax(23px , 1fr));
+        grid-template-rows: repeat(9, minmax(23px, 1fr));
         gap: 1px;
         span {
             background-color: $square-color;
             display: block;
             aspect-ratio: 1 / 1;
+            cursor: pointer;
         }
     }
 }
