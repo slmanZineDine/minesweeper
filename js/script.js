@@ -16,7 +16,7 @@ let arrowR = document.querySelector(".fa-angle-right");
 let icons = document.querySelector(".icons");
 let replay = document.querySelector(".game .retry");
 let tryAgain = document.querySelector(".popup-box .retry");
-console.log(minesCount);
+
 // Global Variables
 let levelSelected = 1;
 let iconName = "mine";
@@ -148,7 +148,7 @@ function distributeMines() {
         minesSet.add(gameField.children[rand].id)
     }
     minesSet.forEach(e =>
-        document.getElementById(`${e}`)
+        document.getElementById(`${e}`).style.backgroundColor = "red"
     );
 }
 function startTime() {

@@ -166,6 +166,11 @@ button {
   font-size: 2em;
   font-weight: bold;
 }
+@media (max-width: 576px) {
+  .game .game-field span {
+    font-size: 1em;
+  }
+}
 .game .game-field span.opened {
   background-color: #2fbbfb;
 }

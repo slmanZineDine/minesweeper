@@ -155,6 +155,9 @@ button {
             color: $font-color;
             font-size: 2em;
             font-weight: bold;
+            @media (max-width: 576px) {
+                font-size: 1em;
+            }
         }
         span.opened {
             background-color: $square-done-color;
