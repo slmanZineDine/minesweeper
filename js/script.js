@@ -49,17 +49,18 @@ gameMode.onclick = function (e) {
     }
 }
 gameField.onclick = function (e) {
+    if(win || lose) return;
     if(e.target === this) return;
     if(iconName === "flag") {
         flagIconFunc(e.target);
         return;
     };
-    if(win || lose) return;
     if(minesSet.has(e.target.id)) {
         e.target.style.backgroundColor = "yellow";
         loseGame();
         return;
     }
+    if(e.target.innerHTML.length > 2) return;
     squaresId(e.target);
     winGame();
 }
