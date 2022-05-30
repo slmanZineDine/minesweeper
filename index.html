@@ -32,13 +32,12 @@
                 <header class="game-header">
                     <div class="time">
                         <i class="fa-solid fa-clock"></i>
-                        <span>02:12</span>
+                        <span></span>
                     </div>
                     <div class="tools">
                         <div class="icons">
-                            <i class="fa-solid fa-land-mine-on active mine"></i>
-                            <i class="fa-solid fa-flag flag"></i>
-                            <i class="fa-solid fa-question ques"></i>
+                            <i class="mine fa-solid fa-land-mine-on active"></i>
+                            <i class="flag fa-solid fa-flag"></i>
                         </div>
                         <div class="mines-count"><span></span> mines</div>
                     </div>
@@ -49,6 +48,17 @@
                 <div class="game-field"></div>
             </div>
             <!-- End game -->
+
+            <!-- Popup -->
+            <div class="popup-box">
+                <div class="popup">
+                    <h2>Congratulation</h2>
+                    <p>You spent <span class="time"></span></p>
+                    <div class="retry">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/script.js"></script>

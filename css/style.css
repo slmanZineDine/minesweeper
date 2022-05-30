@@ -22,6 +22,7 @@ button {
 .container {
   margin: auto;
   max-height: 100vh;
+  position: relative;
 }
 @media (max-width: 576px) {
   .container {
@@ -147,12 +148,77 @@ button {
   grid-template-columns: repeat(9, minmax(23px, 1fr));
   grid-template-rows: repeat(9, minmax(23px, 1fr));
   gap: 1px;
+  padding-top: 0;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+  padding-bottom: 0.2em;
 }
 .game .game-field span {
   background-color: #0d1825;
   display: block;
   aspect-ratio: 1/1;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  color: #f7f4f8;
+  font-size: 2em;
+  font-weight: bold;
+}
+.game .game-field span.opened {
+  background-color: #2fbbfb;
+}
+
+/* Popup Winning */
+.popup-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.popup-box.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+.popup-box .popup {
+  background-image: url(../imgs/win-bg.jfif);
+  padding: 2em 1em 1em 1em;
+  border-radius: 0.5em;
+  color: #fff;
+  position: relative;
+}
+.popup-box .popup h2 {
+  font-size: 2.2em;
+  margin-bottom: 0.8em;
+}
+.popup-box .popup p {
+  font-size: 1.1em;
+}
+.popup-box .popup .retry {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background-color: #f7f4f8;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+.popup-box .popup .retry i {
+  color: #0d1825;
 }
 
 /* End game dsesign *//*# sourceMappingURL=style.css.map */
