@@ -168,7 +168,7 @@ button {
 }
 @media (max-width: 576px) {
   .game .game-field span {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 .game .game-field span.opened {
@@ -201,11 +201,11 @@ button {
   position: relative;
 }
 .popup-box .popup h2 {
-  font-size: 2.2em;
+  font-size: 2em;
   margin-bottom: 0.8em;
 }
 .popup-box .popup p {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .popup-box .popup .retry {
   position: absolute;

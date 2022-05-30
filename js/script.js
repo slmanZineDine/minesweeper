@@ -148,7 +148,7 @@ function distributeMines() {
         minesSet.add(gameField.children[rand].id)
     }
     minesSet.forEach(e =>
-        document.getElementById(`${e}`).style.backgroundColor = "red"
+        document.getElementById(`${e}`)
     );
 }
 function startTime() {
